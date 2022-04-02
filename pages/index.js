@@ -2,7 +2,7 @@ import * as React from "react"
 import Head from "next/head"
 import Image from "next/image"
 import styles from "../styles/Home.module.css"
-import App from './app'
+
 
 
 
@@ -16,7 +16,7 @@ export default function Home() {
       </Head>   
 
       <main className={styles.main}>
-        <App />
+          <a href="http://localhost:3000/app">app</a>
       </main>
 
       <footer className={styles.footer}>

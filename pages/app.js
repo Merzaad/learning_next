@@ -1,74 +1,26 @@
-import * as React from "react"
-import Box from "@mui/material/Box"
-import LoadingButton from '@mui/lab/LoadingButton'
+import * as React from 'react';
+import fetchingApi from './api/api';
 
-const styles = {
-  loadingButton : {
-    fontSize: '25px',
-    color: '#141E27',
-    background: '#E2D784',
-    transitionDuration: '0.3s',
-    ':hover': {
-      background: '#141E27',
-      color:'#E2D784',
-    }
-  },
-  box: {
-    width: '50%',
-    fontSize:'25px',
-    fontFamily: 'arial',
-    textAlign: "center",
-    border: "1px solid black",
-    borderRadius: "10px",
-    margin: "auto",
-    padding: "20px",
-    background: '#203239',
-    color: 'white',
-    transition: 'width 1s',
-    '@media only screen and (max-width: 600px)':{
-      width: '80%'
-    }
-  },
+const state1 = fetchingApi(2);
+const state2 = fetchingApi(4);
+
+function Data1() {
+  const data = state1.fetch();
+  return <h1>{data}</h1>;
 }
 
-const App = () => {
-  const [title, setTitle] = React.useState("zero")
-  const [count, setCount] = React.useState(0)
-
-  const delay = () =>
-    new Promise((resolve) => {
-      setTimeout(() => resolve(1), 2000)
-    })
-
-  const clickHandler = async () => {
-    if (title === "counting") return
-    setTitle("counting")
-    const res = await delay()
-    setCount((prev) => prev + res)
-    setTitle("done")
-  }
-
-  React.useEffect(() => {
-    console.log("counted")
-  }, [count])
-
-  return (
-    <Box
-      sx={styles.box}
-    >
-      <h1>{title}</h1>
-      <p>{count}</p>
-       <LoadingButton
-        sx={styles.loadingButton}
-        onClick={clickHandler}
-        loading={title === 'counting'}
-        loadingPosition="center"
-        variant="contained"
-      >
-        +1
-      </LoadingButton>
-    </Box>
-  )
+function Data2() {
+  const data = state2.fetch();
+  return <h1>{data}</h1>;
 }
-export default App
 
+const App = () => (
+  <React.Suspense fallback={<h1>Loading...</h1>}>
+    <Data1 />
+    <React.Suspense fallback={<h1>Loading...</h1>}>
+      <Data2 />
+    </React.Suspense>
+  </React.Suspense>
+);
+
+export default App;
