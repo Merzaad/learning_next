@@ -1,6 +1,6 @@
 import * as React from "react"
 import fetchingApi from "./api/api"
-
+//testtttttttttttttt
 const state1 = fetchingApi(3)
 const state2 = fetchingApi(4)
 
@@ -10,7 +10,9 @@ function Data1() {
 }
 
 function Data2() {
-  const data = state2.fetch()
+  const test = ()=> state2.fetch()
+  const [data, setData] = React.useState(test)
+  console.log(data)
   return <h1>{data}</h1>
 }
 
