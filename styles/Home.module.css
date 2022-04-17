@@ -1,5 +1,7 @@
 
-
+.container {
+  background-color: rgb(235, 235, 235);
+}
 .main {
   min-height: 80vh;
   flex: 1;
@@ -7,6 +9,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+} 
+
+.main h1 {
+  font-family: Arial;
+  font-size: 40px; 
+  text-decoration:none;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.main h1:hover{
+  transform: scale(1.2);
+  background-color: rgb(154, 255, 221);
 }
 
 .footer {

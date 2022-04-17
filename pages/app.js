@@ -1,17 +1,17 @@
-import * as React from 'react';
-import fetchingApi from './api/api';
+import * as React from "react"
+import fetchingApi from "./api/api"
 
-const state1 = fetchingApi(2);
-const state2 = fetchingApi(4);
+const state1 = fetchingApi(3)
+const state2 = fetchingApi(4)
 
 function Data1() {
-  const data = state1.fetch();
-  return <h1>{data}</h1>;
+  const data = state1.fetch()
+  return <h1>{data}</h1>
 }
 
 function Data2() {
-  const data = state2.fetch();
-  return <h1>{data}</h1>;
+  const data = state2.fetch()
+  return <h1>{data}</h1>
 }
 
 const App = () => (
@@ -21,6 +21,6 @@ const App = () => (
       <Data2 />
     </React.Suspense>
   </React.Suspense>
-);
+)
 
-export default App;
+export default App
