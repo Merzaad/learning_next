@@ -1,7 +1,15 @@
-const fetchData = (promise) => {
+
+const promiseMaker = (dly) =>
+new Promise((resolve) => {
+  setTimeout(() => {
+    resolve(`resolved + ${dly} sec timeout`)
+  }, dly * 1000)
+})
+
+const fetchData = (delay) => {
   let data
   const fetch = async () => {
-    data = await promise
+    data = await promiseMaker(delay)
   }
   const closure = () => {
     if (!data) throw fetch()
@@ -10,17 +18,10 @@ const fetchData = (promise) => {
   return closure
 }
 
-const promise = (delay) =>
-  new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(`resolved + ${delay} sec timeout`)
-    }, delay * 1000)
-  })
 
 const Api = (delay) => {
-  let testPromis = promise(delay)
   return {
-    fetch: fetchData(testPromis),
+    fetch: fetchData(delay),
   }
 }
 
