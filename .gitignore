@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# developing 
+launch.json
+
 # testing
 /coverage
 
@@ -25,6 +28,7 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+
 # local env files
 .env*.local
 
@@ -33,3 +37,4 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
