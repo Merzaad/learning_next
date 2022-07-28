@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import styles from '../styles/Home.module.scss';
 
 const Home: NextPage = () => {
@@ -13,7 +12,7 @@ const Home: NextPage = () => {
       </Head>
 
       <div className={styles.card}>
-        <h1>Next.js!</h1>
+        <a href="/app">Next.js!</a>
       </div>
     </div>
   );
