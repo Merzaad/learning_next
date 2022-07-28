@@ -12,7 +12,7 @@ const Home: NextPage = () => {
       </Head>
 
       <div className={styles.card}>
-        <a href="/app">Next.js!</a>
+        <a href="/nested">Next.js!</a>
       </div>
     </div>
   );
