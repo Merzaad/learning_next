@@ -1,6 +1,6 @@
 {
   "trailingComma": "es5",
-  "semi": true,
+  "semi": false,
   "bracketSpacing": true,
   "arrowParens": "always",
   "tabWidth": 2,
