@@ -1,7 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import styles from '../styles/Css.module.scss'
+import styles from '../styles/Home.module.scss'
 import Link from 'next/link'
+import Card from '../components/Card'
 
 const Home: NextPage = () => {
   return (
@@ -12,7 +13,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Link href="/nested">
-        <div className={styles.card}>Next.js!</div>
+        <Card>Next.js!</Card>
       </Link>
     </div>
   )
