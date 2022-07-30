@@ -8,9 +8,9 @@ const Layout = (prop: propType) => {
   return (
     <Fragment>
       <div className={styles.navbar}>
-        <div className={styles.homeButton}>
-          <Link href="/">Home</Link>
-        </div>
+        <Link href="/">
+          <div className={styles.homeButton}>Home</div>
+        </Link>
       </div>
       <Fragment>{prop.children}</Fragment>
     </Fragment>
