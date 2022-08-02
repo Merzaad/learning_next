@@ -1,7 +1,8 @@
 import styles from '../../styles/Home.module.scss'
 import Link from 'next/link'
 import Card from '../../components/Card'
-export default function Nested() {
+import { NextPage } from 'next'
+const Nested: NextPage = () => {
   return (
     <div className={styles.container}>
       <Link href="/nested/YES">
@@ -16,3 +17,5 @@ export default function Nested() {
     </div>
   )
 }
+
+export default Nested
