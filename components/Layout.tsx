@@ -1,5 +1,5 @@
 import { Fragment, ReactElement } from 'react'
-import styles from '../styles/Layout.module.scss'
+import styles from './Layout.module.scss'
 import Link from 'next/link'
 type propType = {
   children: ReactElement
