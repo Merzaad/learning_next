@@ -4,7 +4,7 @@ import Card from '../../components/Card'
 import { NextPage } from 'next'
 import { useEffect, useState } from 'react'
 type dataType = string[]
-const Nested: NextPage = () => {
+const UseEffect: NextPage = () => {
   const [data, setData] = useState<dataType>([])
   useEffect(() => {
     const promise = () =>
@@ -26,4 +26,4 @@ const Nested: NextPage = () => {
   )
 }
 
-export default Nested
+export default UseEffect
