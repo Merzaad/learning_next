@@ -23,6 +23,9 @@ const Home: NextPage = () => {
       <div onClick ={() => navigate('/serverSideProps')}>
         <Card>serverSideProps</Card>
       </div>
+      <div onClick ={() => navigate('/staticPath')}>
+        <Card>staticPath</Card>
+      </div>
     </div>
   )
 }
