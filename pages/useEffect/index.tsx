@@ -2,7 +2,8 @@ import styles from '../../styles/Home.module.scss'
 import Link from 'next/link'
 import Card from '../../components/Card'
 import { NextPage } from 'next'
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
+import Head from 'next/head'
 type dataType = string[]
 const UseEffect: NextPage = () => {
   const [data, setData] = useState<dataType>([])
@@ -16,13 +17,19 @@ const UseEffect: NextPage = () => {
     fetch()
   }, [])
   return (
-    <div className={styles.container}>
-      {data.map((data, index) => (
-        <Link href={`/nested/${data}`} key={index}>
-          <Card>{data}</Card>
-        </Link>
-      ))}
-    </div>
+    <Fragment>
+      <Head>
+      <title>useEffect Page</title>
+      <meta name="description" content="useEffect Page meta description" />
+      </Head>
+      <div className={styles.container}>
+        {data.map((data, index) => (
+          <Link href={`/nested/${data}`} key={index}>
+            <Card>{data}</Card>
+          </Link>
+        ))}
+      </div>
+    </Fragment>
   )
 }
 
