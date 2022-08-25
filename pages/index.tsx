@@ -36,6 +36,9 @@ const Home: NextPage = () => {
       <div className={styles.btn} onClick={() => apiRoute()}>
         <Card>apiRoute</Card>
       </div>
+      <div className={styles.btn} onClick={() => navigate('/imageOpt')}>
+        <Card>imageOpt</Card>
+      </div>
     </div>
   )
 }
