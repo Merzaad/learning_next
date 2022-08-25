@@ -1,10 +1,11 @@
 import styles from '../../styles/Home.module.scss'
 import Link from 'next/link'
 import Card from '../../components/Card'
+import { NextPage } from 'next'
 type dataType = {
   data: string[]
 }
-const StaticProps = (props: dataType) => {
+const StaticProps: NextPage<dataType> = (props) => {
   return (
     <div className={styles.container}>
       {props.data.map((data, index) => (

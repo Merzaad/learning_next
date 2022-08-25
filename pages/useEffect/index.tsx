@@ -19,12 +19,12 @@ const UseEffect: NextPage = () => {
   return (
     <Fragment>
       <Head>
-      <title>useEffect Page</title>
-      <meta name="description" content="useEffect Page meta description" />
+        <title>useEffect Page</title>
+        <meta name="description" content="useEffect Page meta description" />
       </Head>
       <div className={styles.container}>
         {data.map((data, index) => (
-          <Link href={`/nested/${data}`} key={index}>
+          <Link href={`/nested/${data}`} key={index} className={styles.link}>
             <Card>{data}</Card>
           </Link>
         ))}
