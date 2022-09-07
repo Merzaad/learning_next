@@ -5,39 +5,36 @@ import React from 'react'
 import axios from 'axios'
 
 type dataType = {
-  data: { blocks: number | string }
-  context: { market_price_usd: number | string }
+  data?: { blocks: number }
+  context?: { market_price_usd: number }
+  error?: string
 }
-const ServerSideProps: NextPage<dataType> = ({ data, context }) => {
+const ServerSideProps: NextPage<dataType> = ({ data, context, error }) => {
   return (
     <div className={styles.container}>
       <div className={styles2.card}>
-        <h1>{`blocks: ${data.blocks || data}`}</h1>
+        <p>{`blocks: ${data?.blocks || error}`}</p>
       </div>
       <div className={styles2.card}>
-        <h1>{`price: ${context.market_price_usd || context}`}</h1>
+        <p>{`price: ${context?.market_price_usd || error}`}</p>
       </div>
     </div>
   )
 }
 
-export async function getServerSideProps() {
-  let result: dataType =  {
-    data: { blocks: 'initial' },
-    context: { market_price_usd: 'initial' }
-  }
+export async function getServerSideProps(): Promise<{ props: dataType }> {
+  let result: dataType = {}
   await axios
-    .get('https://api.blockchair.com/ethereum/stats')
+    .get('https://api.blockchair.com/etherseum/stats')
     .then((response) => {
       result = {
         data: response.data.data,
         context: response.data.context,
       }
     })
-    .catch(() => {
+    .catch((error) => {
       result = {
-        data: { blocks: 'error' },
-        context: { market_price_usd: 'error' }
+        error: `error ${error.response.status}`,
       }
     })
   return {
