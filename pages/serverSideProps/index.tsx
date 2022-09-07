@@ -25,7 +25,7 @@ const ServerSideProps: NextPage<dataType> = ({ data, context, error }) => {
 export async function getServerSideProps(): Promise<{ props: dataType }> {
   let result: dataType = {}
   await axios
-    .get('https://api.blockchair.com/etherseum/stats')
+    .get('https://api.blockchair.com/ethereum/stats')
     .then((response) => {
       result = {
         data: response.data.data,
