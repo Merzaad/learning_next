@@ -1,47 +1,47 @@
 import styles from '../../styles/Home.module.scss'
-import Card from '../../components/Card'
+import styles2 from '../../styles/Card.module.scss'
 import { NextPage } from 'next'
 import React from 'react'
+import axios from 'axios'
 
 type dataType = {
-  number: number
+  data: { blocks: number | string }
+  context: { market_price_usd: number | string }
 }
-const ServerSideProps: NextPage<dataType> = (props) => {
-  const [number, setCount] = React.useState(props.number)
-  const [testRender, setTestRender] = React.useState(0)
-  const calculation = (counts: number) => {
-    const time = new Date().getTime()
-    const array: number[] = []
-    for (let i = 0; i < counts; i++) {
-      array.push(i)
-    }
-    console.log(`finish calculation: ${new Date().getTime() - time}`)
-    return array
-  }
-  // const test = calculation(counts)
-  const testMemo = React.useMemo(() => calculation(number), [number])
+const ServerSideProps: NextPage<dataType> = ({ data, context }) => {
   return (
     <div className={styles.container}>
-      <Card>{`length: ${testMemo.length}`}</Card>
-      <Card>{`test: ${testRender}`}</Card>
-      <button type="button" onClick={() => setTestRender((prev) => prev + 1)}>
-        testRender
-      </button>
-      <button type="button" onClick={() => setCount((prev) => prev + 1)}>
-        testCount
-      </button>
+      <div className={styles2.card}>
+        <h1>{`blocks: ${data.blocks || data}`}</h1>
+      </div>
+      <div className={styles2.card}>
+        <h1>{`price: ${context.market_price_usd || context}`}</h1>
+      </div>
     </div>
   )
 }
 
 export async function getServerSideProps() {
-  const promise = () =>
-    new Promise<dataType>((resolve) => setTimeout(() => resolve({ number: 999999 }), 3000))
-  const result = await promise()
+  let result: dataType =  {
+    data: { blocks: 'initial' },
+    context: { market_price_usd: 'initial' }
+  }
+  await axios
+    .get('https://api.blockchair.com/ethereum/stats')
+    .then((response) => {
+      result = {
+        data: response.data.data,
+        context: response.data.context,
+      }
+    })
+    .catch(() => {
+      result = {
+        data: { blocks: 'error' },
+        context: { market_price_usd: 'error' }
+      }
+    })
   return {
-    props: {
-      ...result,
-    },
+    props: result,
   }
 }
 
